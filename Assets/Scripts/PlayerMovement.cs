@@ -31,7 +31,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        // set initial values so animations work as intended
         currentState = PlayerState.walk;
+        animator.SetFloat("moveX", 0);
+        animator.SetFloat("moveY", -1);
     }
 
     private void Update()
@@ -76,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveCharacter()
     {
+        change.Normalize();
         // Apply transform change
         // Multiply by speed and delta time
         myRigidBody.MovePosition(
