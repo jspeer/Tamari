@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RoomChangeTrigger
   - InteractableSign
+  - Breakable
   layers:
   - Default
   - TransparentFX

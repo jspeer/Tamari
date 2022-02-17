@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class HitBoxAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.CompareTag("Breakable")) {
+            StartCoroutine(other.GetComponent<Breakable>().Break());
+        }
     }
 }

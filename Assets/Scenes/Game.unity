@@ -123,6 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13543719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13543720}
+  m_Layer: 0
+  m_Name: Placed Interactables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &13543720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13543719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1958423852}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &437360498 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7068020944294219454, guid: 469f53578c7b22243a641529ed1fc5cb, type: 3}
@@ -271,6 +303,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -4904446374832672195, guid: d12c269bad156794094180ad7575f880, type: 3}
+--- !u!4 &1958423852 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+  m_PrefabInstance: {fileID: 4822826903075656006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2041185760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3285029313174981417, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
@@ -358,11 +395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3285029313174981417, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.4
+      value: 6.56
       objectReference: {fileID: 0}
     - target: {fileID: 3285029313174981417, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.95
+      value: -13.2
       objectReference: {fileID: 0}
     - target: {fileID: 3285029313174981417, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -396,22 +433,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5022577069587581214, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022577069587581214, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022577069587581214, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022577069587581214, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -442,6 +463,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
+--- !u!1001 &4822826903075656006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 13543720}
+    m_Modifications:
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077354, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822826904497077359, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
+      propertyPath: m_Name
+      value: Breakable Pot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e40ecc62a0501d74286e4d0f954bcf8c, type: 3}
 --- !u!1001 &4928379654188469622
 PrefabInstance:
   m_ObjectHideFlags: 0
