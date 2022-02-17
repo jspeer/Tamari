@@ -15,8 +15,8 @@ public class CameraMovement : MonoBehaviour
         camera = GetComponent<Camera>();
 
         // fancy way to dynamically allow us to walk behind objects
-        // camera.transparencySortMode = TransparencySortMode.CustomAxis;
-        // camera.transparencySortAxis = Vector3.up;
+        camera.transparencySortMode = TransparencySortMode.CustomAxis;
+        camera.transparencySortAxis = Vector3.up;
     }
 
     private void LateUpdate()
