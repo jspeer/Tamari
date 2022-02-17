@@ -1,0 +1,113 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Overworld.tsx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Cave.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Inner.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Objects.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "Overworld-1,0.tmx": {
+            "scale": 1,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 815.5,
+                "y": 448
+            }
+        },
+        "Overworld-1,2.tmx": {
+            "scale": 1,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 1061.5,
+                "y": 5
+            }
+        },
+        "Overworld.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 155.66666666666663,
+                "y": 172
+            }
+        },
+        "Overworld.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1.5
+        },
+        "Overworld0,0.tmx": {
+            "scale": 1,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 397.5,
+                "y": 291
+            }
+        },
+        "Overworld0,1.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 401,
+                "y": 840
+            }
+        },
+        "Overworld1,0.tmx": {
+            "scale": 16,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 189.78125,
+                "y": 392.8125
+            }
+        }
+    },
+    "last.imagePath": "D:/Development/Projects/Unity/Tamari/Assets/Art/gfx",
+    "last.worldFilePath": "D:/Development/Projects/Unity/Tamari/Assets/TiledMaps",
+    "loadedWorlds": [
+        "D:/Development/Projects/Unity/Tamari/Assets/TiledMaps/World.world"
+    ],
+    "map.height": 25,
+    "map.lastUsedFormat": "tmx",
+    "map.renderOrder": null,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 75,
+    "mapScene.enableWorlds": true,
+    "openFiles": [
+        "Overworld.tsx",
+        "Overworld-1,0.tmx",
+        "Overworld0,0.tmx",
+        "Overworld1,0.tmx",
+        "Overworld0,1.tmx"
+    ],
+    "project": "Tamari.tiled-project",
+    "property.type": "string",
+    "recentFiles": [
+        "Overworld.tsx",
+        "Objects.tsx",
+        "Inner.tsx",
+        "Cave.tsx",
+        "Overworld0,1.tmx",
+        "Overworld1,0.tmx",
+        "Overworld0,0.tmx",
+        "Overworld-1,0.tmx",
+        "Overworld.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

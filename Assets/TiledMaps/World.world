@@ -1,0 +1,41 @@
+{
+    "maps": [
+        {
+            "fileName": "Overworld0,1.tmx",
+            "height": 400,
+            "width": 400,
+            "x": 0,
+            "y": -400
+        },
+        {
+            "fileName": "Overworld1,0.tmx",
+            "height": 400,
+            "width": 400,
+            "x": 400,
+            "y": 0
+        },
+        {
+            "fileName": "Overworld0,0.tmx",
+            "height": 400,
+            "width": 400,
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "Overworld-1,0.tmx",
+            "height": 400,
+            "width": 400,
+            "x": -400,
+            "y": 0
+        },
+        {
+            "fileName": "Overworld-1,2.tmx",
+            "height": 400,
+            "width": 1200,
+            "x": -400,
+            "y": 400
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}
