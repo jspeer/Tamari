@@ -51,6 +51,7 @@ public class TiledCollisionHandler : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
+        // TODO: ADD NEW TAGS HERE
         switch (tag) {
             // some tricky shit to get switch/case to use non-constant values
             // CHANGE ROOM TRIGGER
