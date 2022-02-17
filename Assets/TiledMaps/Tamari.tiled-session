@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Overworld.tsx",
+    "activeFile": "Overworld1,0.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -45,7 +45,7 @@
             }
         },
         "Overworld.tsx": {
-            "scaleInDock": 4,
+            "scaleInDock": 1,
             "scaleInEditor": 1.5
         },
         "Overworld0,0.tmx": {
@@ -86,23 +86,24 @@
     "map.width": 75,
     "mapScene.enableWorlds": true,
     "openFiles": [
-        "Overworld.tsx",
         "Overworld-1,0.tmx",
         "Overworld0,0.tmx",
         "Overworld1,0.tmx",
-        "Overworld0,1.tmx"
+        "Overworld0,1.tmx",
+        "Overworld-1,2.tmx"
     ],
     "project": "Tamari.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "Overworld-1,0.tmx",
+        "Overworld0,0.tmx",
+        "Overworld-1,2.tmx",
+        "Overworld0,1.tmx",
+        "Overworld1,0.tmx",
         "Overworld.tsx",
         "Objects.tsx",
         "Inner.tsx",
         "Cave.tsx",
-        "Overworld0,1.tmx",
-        "Overworld1,0.tmx",
-        "Overworld0,0.tmx",
-        "Overworld-1,0.tmx",
         "Overworld.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

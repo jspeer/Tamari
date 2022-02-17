@@ -335,10 +335,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2041185760}
-    - target: {fileID: 3254716573634332150, guid: 306685fa881f3fa4e86672ad7ad572ef, type: 3}
-      propertyPath: smoothing
-      value: 0.7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 306685fa881f3fa4e86672ad7ad572ef, type: 3}
 --- !u!1001 &3285029311708417737

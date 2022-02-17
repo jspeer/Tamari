@@ -1585,7 +1585,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 30
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1604,7 +1604,7 @@ TextureImporter:
       name: character_72
       rect:
         serializedVersion: 2
-        x: 32
+        x: 29
         y: 0
         width: 32
         height: 32
@@ -1625,7 +1625,7 @@ TextureImporter:
       name: character_74
       rect:
         serializedVersion: 2
-        x: 64
+        x: 62
         y: 0
         width: 32
         height: 32
@@ -1646,7 +1646,7 @@ TextureImporter:
       name: character_76
       rect:
         serializedVersion: 2
-        x: 96
+        x: 95
         y: 0
         width: 32
         height: 32

@@ -2,9 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState
+{
+    walk,
+    attack,
+    interact
+}
+
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
+    [SerializeField] private PlayerState currentState;
+    public PlayerState CurrentState { get { return currentState; } }
     [SerializeField] private float speed;
+    [Header("Attack Animation")]
+    [SerializeField] private float lengthOfFrame;
+    [SerializeField] private float numberOfFrames;
 
     private Rigidbody2D myRigidBody;
     private Animator animator;
@@ -16,14 +29,33 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        currentState = PlayerState.walk;
+    }
+
     private void Update()
     {
         // Reset change and reassign to input values
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetButtonDown("Fire1") && currentState != PlayerState.attack) {
+            StartCoroutine(Attacking());
+        } else if (currentState == PlayerState.walk) {
+            UpdateAnimationAndMove();
+        }
+    }
 
-        UpdateAnimationAndMove();
+    private IEnumerator Attacking()
+    {
+        animator.SetBool("attacking", true);
+        currentState = PlayerState.attack;
+        yield return new WaitForEndOfFrame();
+        animator.SetBool("attacking", false);
+        float waitDelay = lengthOfFrame * numberOfFrames;
+        yield return new WaitForSeconds(waitDelay);
+        currentState = PlayerState.walk;
     }
 
     private void UpdateAnimationAndMove()

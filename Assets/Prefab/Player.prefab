@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1814987531494108741, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
+      propertyPath: lengthOfFrame
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1814987531494108792, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
       propertyPath: m_Name
       value: Player
