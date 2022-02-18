@@ -245,38 +245,6 @@ Transform:
   m_Father: {fileID: 13543720}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &381660047 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2779816496645600588, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
-  m_PrefabInstance: {fileID: 2779816496310500529}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &381660049 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5284241459215747747, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
-  m_PrefabInstance: {fileID: 2779816496310500529}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &381660054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 381660047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ced75d34954804ba127ae9be5f305f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: Leeroy the Log
-  health: 2
-  moveSpeed: 2.75
-  returnToHomeposition: 1
-  damageTakenCollider: {fileID: 381660049}
-  agroRange: 4
-  attackRange: 1
-  baseDamage: 1
-  knockbackTimeout: 0.2
-  wakeUpRange: 0
 --- !u!114 &437360498 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7068020944294219454, guid: 469f53578c7b22243a641529ed1fc5cb, type: 3}
@@ -609,10 +577,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Log Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 2779816496645600588, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 2779816496645600945, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -657,8 +621,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4323175330170862289, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
 --- !u!1001 &3254716574153096584
 PrefabInstance:
@@ -728,10 +691,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 636455409440077718, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3285029313174981397, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -780,40 +739,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6717029277945637569, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: knockbackForce
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083935206118723262, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5023728359528638937, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6223d7a800fa3ad47bd681109ca5075c, type: 3}
 --- !u!1001 &4822826903075656006
 PrefabInstance:

@@ -53,13 +53,13 @@ abstract public class BaseEnemy : AbstractEnemy
 
     override protected void MoveToTarget()
     {
-        transform.position = CalculateMoveVector(attackTarget.transform.position);
+        rigidbody2D.MovePosition(CalculateMoveVector(attackTarget.transform.position));
     }
 
     override protected void ReturnToHome()
     {
         if (returnToHomeposition && transform.position != homePosition) {
-            transform.position = CalculateMoveVector(homePosition);
+            rigidbody2D.MovePosition(CalculateMoveVector(homePosition));
         }
     }
 
@@ -78,7 +78,6 @@ abstract public class BaseEnemy : AbstractEnemy
     protected IEnumerator ApplyKnockback(Vector2 appliedForce)
     {
         // turn on ragdoll and apply force
-        rigidbody2D.isKinematic = false;
         rigidbody2D.AddForce(appliedForce);
         enemyState = EnemyState.knockback;
         // wait
@@ -86,7 +85,6 @@ abstract public class BaseEnemy : AbstractEnemy
 
         // turn off ragdoll and remove force
         rigidbody2D.velocity = Vector2.zero;
-        rigidbody2D.isKinematic = true;
         enemyState = EnemyState.walk;
         yield return null;
     }
