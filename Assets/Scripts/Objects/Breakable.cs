@@ -17,11 +17,13 @@ public class Breakable : MonoBehaviour
 
     public IEnumerator Break()
     {
-        if (hasAnimation) {
-            animator.SetBool("broken", true);
-            float waitDelay = lengthOfFrame * numberOfFrames;
-            yield return new WaitForSeconds(waitDelay);
+        if (gameObject != null) {
+            if (hasAnimation) {
+                animator.SetBool("broken", true);
+                float waitDelay = lengthOfFrame * numberOfFrames;
+                yield return new WaitForSeconds(waitDelay);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

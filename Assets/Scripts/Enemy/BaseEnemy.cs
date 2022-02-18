@@ -1,3 +1,4 @@
+using System.Threading;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,17 +17,18 @@ abstract public class BaseEnemy : AbstractEnemy
     [SerializeField] protected float agroRange;
     [SerializeField] protected float attackRange;
     [SerializeField] protected float baseDamage;
-
-    [SerializeField] protected Vector3 homePosition;
+    [SerializeField] protected float knockbackTimeout;
+    protected Vector3 homePosition;
     protected GameObject attackTarget;
     protected bool isChaseTarget;
     protected bool isAttackTarget;
     protected float attackDistance;
     protected EnemyState enemyState;
+    new protected Rigidbody2D rigidbody2D;  // overloaded deprecated
 
     sealed override protected void Awake()
     {
-        
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     sealed override protected void Start()
@@ -41,10 +43,12 @@ abstract public class BaseEnemy : AbstractEnemy
         CheckDistance();
 
         // Reset the state every frame
-        enemyState = EnemyState.idle;
-        if (transform.position != homePosition) enemyState = EnemyState.walk;
-        if (isChaseTarget) enemyState = EnemyState.chase;
-        if (isAttackTarget) enemyState = EnemyState.attack;
+        if (enemyState != EnemyState.knockback) {
+            enemyState = EnemyState.idle;
+            if (transform.position != homePosition) enemyState = EnemyState.walk;
+            if (isChaseTarget) enemyState = EnemyState.chase;
+            if (isAttackTarget) enemyState = EnemyState.attack;
+        }
     }
 
     override protected void MoveToTarget()
@@ -59,9 +63,41 @@ abstract public class BaseEnemy : AbstractEnemy
         }
     }
 
-    public override void ReceiveKnockback(Vector3 direction)
+    override public void ReceiveKnockbackMessage(object[] args)
     {
-        throw new NotImplementedException();
+        // unpack args
+        Vector3 otherPosition = (Vector3)args[0];
+        float knockbackForce = (float)args[1];
+
+        // calculate force
+        Vector2 appliedForce = transform.position - otherPosition;
+        appliedForce = appliedForce.normalized * knockbackForce;
+        StartCoroutine(ApplyKnockback(appliedForce));
+    }
+
+    protected IEnumerator ApplyKnockback(Vector2 appliedForce)
+    {
+        // turn on ragdoll and apply force
+        rigidbody2D.isKinematic = false;
+        rigidbody2D.AddForce(appliedForce);
+        enemyState = EnemyState.knockback;
+        // wait
+        yield return new WaitForSeconds(knockbackTimeout);
+
+        // turn off ragdoll and remove force
+        rigidbody2D.velocity = Vector2.zero;
+        rigidbody2D.isKinematic = true;
+        enemyState = EnemyState.walk;
+        yield return null;
+    }
+
+    override public void ReceiveDamageMessage(object[] args)
+    {
+        // unpack args
+        GameObject other = (GameObject)args[0];
+        float damageApplied = (float)args[1];
+
+        // TODO: ...do something...
     }
 
     protected void CheckDistance()

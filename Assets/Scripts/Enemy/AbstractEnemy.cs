@@ -7,7 +7,8 @@ public enum EnemyState
     idle,
     walk,
     chase,
-    attack
+    attack,
+    knockback
 }
 
 abstract public class AbstractEnemy : MonoBehaviour
@@ -18,5 +19,6 @@ abstract public class AbstractEnemy : MonoBehaviour
     abstract protected void MoveToTarget();
     abstract protected void ReturnToHome();
     abstract protected void AttackTarget();
-    abstract public void ReceiveKnockback(Vector3 direction);
+    abstract public void ReceiveKnockbackMessage(object[] args);
+    abstract public void ReceiveDamageMessage(object[] args);
 }

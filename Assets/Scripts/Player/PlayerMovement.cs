@@ -72,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
         } else {
-            //animator.StopPlayback();
             animator.SetBool("moving", false);
         }
     }
