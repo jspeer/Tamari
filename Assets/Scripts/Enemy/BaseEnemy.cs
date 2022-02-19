@@ -4,7 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class BaseEnemy : AbstractEnemy
+public enum EnemyState
+{
+    sleeping,
+    idle,
+    walk,
+    chase,
+    attack,
+    stagger
+}
+
+abstract public class BaseEnemy : MonoBehaviour
 {
     [Header("Base")]
     [SerializeField] protected string enemyName;
@@ -23,48 +33,94 @@ abstract public class BaseEnemy : AbstractEnemy
     protected bool isChaseTarget;
     protected bool isAttackTarget;
     protected float attackDistance;
-    protected EnemyState enemyState;
+    [SerializeField] protected EnemyState enemyState; // serialized so i can manipulate it during dev // TODO: REMOVE SERIALIZE FIELD
     new protected Rigidbody2D rigidbody2D;  // overloaded deprecated
 
-    sealed override protected void Awake()
+    protected void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    sealed override protected void Start()
+    protected void Start()
     {
         enemyState = EnemyState.idle;
         homePosition = transform.position;
+
+        attackTarget = GameObject.FindGameObjectWithTag("Player");
     }
 
-    sealed override protected void Update()
+    protected void Update()
     {
-        // Reset the distance and flags
+        // Check and adjust state every frame
+        SetState();
+
+        // Non-physics based states
+        switch (enemyState) {
+            case EnemyState.idle:
+                // go to sleep
+                break;
+        }
+    }
+
+    protected void FixedUpdate()
+    {
+        // Change target vectors and flags during physics update
         CheckDistance();
 
+        // Physics based states
+        switch (enemyState) {
+            case EnemyState.walk:
+                ReturnToHome();
+                break;
+            case EnemyState.chase:
+                MoveToTarget();
+                break;
+            case EnemyState.attack:
+                // attack player
+                break;
+        }
+    }
+
+    private void SetState()
+    {
         // Reset the state every frame
-        if (enemyState != EnemyState.knockback) {
+        // If we're staggering, wait until we're not
+        if (enemyState != EnemyState.stagger)
+        {
             enemyState = EnemyState.idle;
-            if (transform.position != homePosition) enemyState = EnemyState.walk;
+            // If we've are supposed to return to a home position, override the state to walk
+            if (returnToHomeposition && transform.position != homePosition) enemyState = EnemyState.walk;
+            // If we are supposed to chase, override the state to chase
             if (isChaseTarget) enemyState = EnemyState.chase;
+            // If we are supposed to attack, override the state to attack
             if (isAttackTarget) enemyState = EnemyState.attack;
         }
     }
 
-    override protected void MoveToTarget()
+    virtual protected void MoveToTarget()
     {
-        rigidbody2D.MovePosition(CalculateMoveVector(attackTarget.transform.position));
+        List<EnemyState> validStates = new List<EnemyState>{
+            EnemyState.idle,
+            EnemyState.walk,
+            EnemyState.chase
+        };
+
+        if (validStates.Contains(enemyState)) {
+            rigidbody2D.velocity = Vector2.zero;
+            rigidbody2D.MovePosition(CalculateMoveVector(attackTarget.transform.position));
+        }
     }
 
-    override protected void ReturnToHome()
+    virtual protected void ReturnToHome()
     {
         if (returnToHomeposition && transform.position != homePosition) {
             rigidbody2D.MovePosition(CalculateMoveVector(homePosition));
         }
     }
 
-    override public void ReceiveKnockbackMessage(object[] args)
+    virtual public void ReceiveKnockbackMessage(object[] args)
     {
+        // TODO: test to ensure the arg types are what we're expecting
         // unpack args
         Vector3 otherPosition = (Vector3)args[0];
         float knockbackForce = (float)args[1];
@@ -77,20 +133,18 @@ abstract public class BaseEnemy : AbstractEnemy
 
     protected IEnumerator ApplyKnockback(Vector2 appliedForce)
     {
-        // turn on ragdoll and apply force
         rigidbody2D.AddForce(appliedForce);
-        enemyState = EnemyState.knockback;
-        // wait
+        enemyState = EnemyState.stagger;
         yield return new WaitForSeconds(knockbackTimeout);
 
-        // turn off ragdoll and remove force
         rigidbody2D.velocity = Vector2.zero;
-        enemyState = EnemyState.walk;
+        enemyState = EnemyState.idle;
         yield return null;
     }
 
-    override public void ReceiveDamageMessage(object[] args)
+    virtual public void ReceiveDamageMessage(object[] args)
     {
+        // TODO: test to ensure the arg types are what we're expecting
         // unpack args
         GameObject other = (GameObject)args[0];
         float damageApplied = (float)args[1];

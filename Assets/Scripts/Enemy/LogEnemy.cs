@@ -15,33 +15,15 @@ public class LogEnemy : BaseEnemy
     new private void Start()
     {
         base.Start();
-
-        attackTarget = GameObject.FindGameObjectWithTag("Player");
     }
 
     new private void Update()
     {
         base.Update();
-
-        switch (enemyState) {
-            case EnemyState.idle:
-                // go to sleep
-                break;
-            case EnemyState.walk:
-                ReturnToHome();
-                break;
-            case EnemyState.chase:
-                MoveToTarget();
-                break;
-            case EnemyState.attack:
-                // attack player
-                break;
-        }
     }
 
-
-    sealed override protected void AttackTarget()
+    new private void FixedUpdate()
     {
-
+        base.FixedUpdate();
     }
 }

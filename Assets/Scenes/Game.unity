@@ -573,6 +573,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 979816093912995799, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
+      propertyPath: attackRange
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2779816496645600588, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
       propertyPath: m_Name
       value: Log Enemy
