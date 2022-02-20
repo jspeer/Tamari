@@ -4,16 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyState
-{
-    sleeping,
-    idle,
-    walk,
-    chase,
-    attack,
-    stagger
-}
-
 abstract public class BaseEnemy : MonoBehaviour
 {
     [Header("Base")]

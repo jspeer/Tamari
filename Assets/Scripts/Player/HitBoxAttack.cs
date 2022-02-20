@@ -23,7 +23,7 @@ public class HitBoxAttack : MonoBehaviour
                 // TODO: calculate damage applied?
                 float damageApplied = 0f;
                 other.SendMessage("ReceiveDamageMessage", new object[2]{gameObject, damageApplied}, SendMessageOptions.DontRequireReceiver);
-                // TODO maybe use method below instaed of send message? -- see breakable
+                // TODO maybe use method below instead of send message? -- see breakable
                 // other.GetComponent<BaseEnemy>().ReceiveDamage(damageApplied);
                 break;
         }
