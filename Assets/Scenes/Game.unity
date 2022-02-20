@@ -621,26 +621,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1814987531494108793, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
-      propertyPath: m_Size.x
-      value: 0.9939904
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814987531494108793, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
-      propertyPath: m_Size.y
-      value: 0.248914
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814987531494108793, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.0017955303
-      objectReference: {fileID: 0}
-    - target: {fileID: 1814987531494108793, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.5610174
-      objectReference: {fileID: 0}
-    - target: {fileID: 4693004797402346048, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
-      propertyPath: knockbackTimeout
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd8f4c38e542f4745b16314dbd658536, type: 3}
 --- !u!1001 &2779816496310500529
@@ -652,7 +632,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 979816093912995799, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
       propertyPath: attackRange
-      value: 1.2
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 2779816496645600588, guid: 05a26cdb4aef6fd40a65e0d361249ab1, type: 3}
       propertyPath: m_Name

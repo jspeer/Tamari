@@ -34,35 +34,39 @@ public class TiledCollisionHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // TODO: ADD NEW TAGS HERE
-        switch (tag) {
-            // some tricky shit to get switch/case to use non-constant values
-            // CHANGE ROOM TRIGGER
-            case var value when value == gameManager.SuperTiledRoomChangeTriggerTag:
-                RoomChangeTrigger(other);
-                break;
-            // SIGN TRIGGER
-            case var value when value == gameManager.SuperTiledSignTriggerTag:
-                GetLocalizedMessage();
-                gameManager.GetComponent<InteractableSign>().TriggerEnter2D(other, message);
-                break;
+        if (other.tag == "Player") {
+            // TODO: ADD NEW TAGS HERE
+            switch (tag) {
+                // some tricky shit to get switch/case to use non-constant values
+                // CHANGE ROOM TRIGGER
+                case var value when value == gameManager.SuperTiledRoomChangeTriggerTag:
+                    RoomChangeTrigger(other);
+                    break;
+                // SIGN TRIGGER
+                case var value when value == gameManager.SuperTiledSignTriggerTag:
+                    GetLocalizedMessage();
+                    gameManager.GetComponent<InteractableSign>().TriggerEnter2D(other, message);
+                    break;
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        // TODO: ADD NEW TAGS HERE
-        switch (tag) {
-            // some tricky shit to get switch/case to use non-constant values
-            // CHANGE ROOM TRIGGER
-            case var value when value == gameManager.SuperTiledRoomChangeTriggerTag:
-                break;
-            // SIGN TRIGGER
-            case var value when value == gameManager.SuperTiledSignTriggerTag:
-                gameManager.GetComponent<InteractableSign>().TriggerExit2D();
-                break;
-            default:
-                break;
+        if (other.tag == "Player") {
+            // TODO: ADD NEW TAGS HERE
+            switch (tag) {
+                // some tricky shit to get switch/case to use non-constant values
+                // CHANGE ROOM TRIGGER
+                case var value when value == gameManager.SuperTiledRoomChangeTriggerTag:
+                    break;
+                // SIGN TRIGGER
+                case var value when value == gameManager.SuperTiledSignTriggerTag:
+                    gameManager.GetComponent<InteractableSign>().TriggerExit2D();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

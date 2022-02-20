@@ -8,6 +8,7 @@ TagManager:
   - InteractableSign
   - Breakable
   - Enemy
+  - PlayerHurtbox
   layers:
   - Default
   - TransparentFX

@@ -9,5 +9,6 @@ public class Player : MonoBehaviour
     public float Damage { get { return damage; } }
     [SerializeField] private float knockbackForce;
     public float KnockbackForce { get { return knockbackForce; } }
-
+    [SerializeField] private float knockbackTimeout = 0.2f;
+    public float KnockbackTimeout { get { return knockbackTimeout; } }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    [SerializeField] float knockbackTimeout = .2f;
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy") {
@@ -19,7 +17,7 @@ public class Knockback : MonoBehaviour
     {
         gameObject.GetComponentInParent<Rigidbody2D>().AddForce(appliedForce);
         gameObject.GetComponentInParent<PlayerMovement>().CurrentState = PlayerState.stagger;
-        yield return new WaitForSeconds(knockbackTimeout);
+        yield return new WaitForSeconds(gameObject.GetComponentInParent<Player>().KnockbackTimeout);
 
         gameObject.GetComponentInParent<Rigidbody2D>().velocity = Vector2.zero;
         gameObject.GetComponentInParent<PlayerMovement>().CurrentState = PlayerState.walk;
