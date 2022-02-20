@@ -43,13 +43,6 @@ abstract public class BaseEnemy : MonoBehaviour
     {
         // Check and adjust state every frame
         SetState();
-
-        // Non-physics based states
-        switch (enemyState) {
-            case EnemyState.idle:
-                // go to sleep
-                break;
-        }
     }
 
     protected void FixedUpdate()
@@ -73,24 +66,38 @@ abstract public class BaseEnemy : MonoBehaviour
 
     private void SetState()
     {
-        // Reset the state every frame
-        // If we're staggering, wait until we're not
-        if (enemyState != EnemyState.stagger)
-        {
-            enemyState = EnemyState.idle;
-            // If we've are supposed to return to a home position, override the state to walk
-            if (returnToHomeposition && transform.position != homePosition) enemyState = EnemyState.walk;
-            // If we are supposed to chase, override the state to chase
-            if (isChaseTarget) enemyState = EnemyState.chase;
-            // If we are supposed to attack, override the state to attack
-            if (isAttackTarget) enemyState = EnemyState.attack;
+        List<EnemyState> validStates = new List<EnemyState>{
+            EnemyState.idle,
+            EnemyState.walk,
+            EnemyState.chase,
+            EnemyState.attack
+        };
+
+        if (validStates.Contains(enemyState)) {
+            switch (enemyState) {
+                case EnemyState.idle:
+                    // If idle, and RTH, set state to walk
+                    if (returnToHomeposition && transform.position != homePosition) enemyState = EnemyState.walk;
+                    goto case EnemyState.walk;
+                case EnemyState.walk:
+                    // If idle or walk, and isChaseTarget, set state to chase
+                    if (isChaseTarget) enemyState = EnemyState.chase;
+                    goto case EnemyState.chase;
+                case EnemyState.chase:
+                    // If walk or chase, and isAttackTarget, set state to attack
+                    if (isAttackTarget) enemyState = EnemyState.attack;
+                    break;
+                default:
+                    // No case matched, set back to idle
+                    enemyState = EnemyState.idle;
+                    break;
+            }
         }
     }
 
     virtual protected void MoveToTarget()
     {
         List<EnemyState> validStates = new List<EnemyState>{
-            EnemyState.idle,
             EnemyState.walk,
             EnemyState.chase
         };
@@ -124,11 +131,12 @@ abstract public class BaseEnemy : MonoBehaviour
     protected IEnumerator ApplyKnockback(Vector2 appliedForce)
     {
         rigidbody2D.AddForce(appliedForce);
+        EnemyState previousState = enemyState;
         enemyState = EnemyState.stagger;
         yield return new WaitForSeconds(knockbackTimeout);
 
         rigidbody2D.velocity = Vector2.zero;
-        enemyState = EnemyState.idle;
+        enemyState = previousState;
         yield return null;
     }
 

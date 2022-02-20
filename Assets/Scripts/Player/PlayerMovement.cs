@@ -25,14 +25,14 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         // set initial values so animations work as intended
-        currentState = PlayerState.walk;
+        currentState = PlayerState.idle;
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
     }
 
     private void Update()
     {
-        List<PlayerState> validStates = new List<PlayerState>{
+        List<PlayerState> validMovementStates = new List<PlayerState>{
             PlayerState.idle,
             PlayerState.walk,
         };
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         change.y = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Fire1") && currentState != PlayerState.attack) {
             StartCoroutine(Attacking());
-        } else if (validStates.Contains(currentState)) {
+        } else if (validMovementStates.Contains(currentState)) {
             UpdateAnimationAndMove();
         }
     }
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("attacking", false);
         float waitDelay = lengthOfFrame * numberOfFrames;
         yield return new WaitForSeconds(waitDelay);
-        currentState = PlayerState.walk;
+        currentState = PlayerState.idle;
     }
 
     private void UpdateAnimationAndMove()
@@ -64,12 +64,14 @@ public class PlayerMovement : MonoBehaviour
         // If we've inputted movement, move the character
         if (change != Vector3.zero)
         {
+            currentState = PlayerState.walk;
             MoveCharacter();
             // Set the animator move values
             animator.SetBool("moving", true);
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
         } else {
+            currentState = PlayerState.idle;
             animator.SetBool("moving", false);
         }
     }
