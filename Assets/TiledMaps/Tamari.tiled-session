@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Overworld1,0.tmx",
+    "activeFile": "Overworld-1,0.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -21,19 +21,19 @@
             "scaleInEditor": 2
         },
         "Overworld-1,0.tmx": {
-            "scale": 1,
+            "scale": 8,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 815.5,
-                "y": 448
+                "x": 408.9375,
+                "y": 250.75
             }
         },
         "Overworld-1,2.tmx": {
             "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1061.5,
-                "y": 5
+                "x": 591.5,
+                "y": 200.5
             }
         },
         "Overworld.tmx": {
@@ -49,27 +49,27 @@
             "scaleInEditor": 1.5
         },
         "Overworld0,0.tmx": {
-            "scale": 1,
+            "scale": 3,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 397.5,
-                "y": 291
+                "x": 237.83333333333331,
+                "y": 49.33333333333333
             }
         },
         "Overworld0,1.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 401,
-                "y": 840
+                "x": 237.83333333333331,
+                "y": 449.3333333333333
             }
         },
         "Overworld1,0.tmx": {
-            "scale": 16,
+            "scale": 3,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 189.78125,
-                "y": 392.8125
+                "x": -162.16666666666666,
+                "y": 49.33333333333333
             }
         }
     },
@@ -95,11 +95,11 @@
     "project": "Tamari.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "Overworld-1,0.tmx",
-        "Overworld0,0.tmx",
         "Overworld-1,2.tmx",
         "Overworld0,1.tmx",
         "Overworld1,0.tmx",
+        "Overworld0,0.tmx",
+        "Overworld-1,0.tmx",
         "Overworld.tsx",
         "Objects.tsx",
         "Inner.tsx",
