@@ -4,16 +4,18 @@ using UnityEngine;
 
 public enum PlayerState
 {
+    idle,
     walk,
     attack,
-    interact
+    interact,
+    stagger
 }
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private PlayerState currentState;
-    public PlayerState CurrentState { get { return currentState; } }
+    public PlayerState CurrentState { get { return currentState; } set { currentState = value; } }
     [SerializeField] private float speed;
     [Header("Attack Animation")]
     [SerializeField] private float lengthOfFrame;
@@ -39,13 +41,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        List<PlayerState> validStates = new List<PlayerState>{
+            PlayerState.idle,
+            PlayerState.walk,
+        };
+
         // Reset change and reassign to input values
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Fire1") && currentState != PlayerState.attack) {
             StartCoroutine(Attacking());
-        } else if (currentState == PlayerState.walk) {
+        } else if (validStates.Contains(currentState)) {
             UpdateAnimationAndMove();
         }
     }

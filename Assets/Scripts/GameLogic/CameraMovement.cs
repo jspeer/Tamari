@@ -19,7 +19,7 @@ public class CameraMovement : MonoBehaviour
         camera.transparencySortAxis = Vector3.up;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         // if target moved, we need to move the camera
         if (transform.position != target.position) {
