@@ -4,38 +4,14 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    [SerializeField] float knockbackTimeout = 2f;
-    new private Rigidbody2D rigidbody2D; // overload deprecated definition
-
-    private void Awake()
-    {
-
-    }
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-
-    }
-
-    private void FixedUpdate()
-    {
-        
-    }
+    [SerializeField] float knockbackTimeout = .2f;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy") {
-            Vector3 otherPosition = other.transform.position;
-
-            Vector2 appliedForce = gameObject.transform.position - otherPosition;
+            Vector2 appliedForce = transform.position - other.transform.position;
             appliedForce = appliedForce.normalized * gameObject.GetComponentInParent<Player>().KnockbackForce;
             StartCoroutine(ApplyKnockback(appliedForce));
-
         }
     }
 
