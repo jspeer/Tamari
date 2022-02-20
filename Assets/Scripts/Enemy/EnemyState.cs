@@ -5,5 +5,6 @@ public enum EnemyState
     walk,
     chase,
     attack,
+    combat,
     stagger
 }

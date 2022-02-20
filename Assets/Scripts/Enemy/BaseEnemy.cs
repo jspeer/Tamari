@@ -35,7 +35,6 @@ abstract public class BaseEnemy : MonoBehaviour
     {
         enemyState = EnemyState.idle;
         homePosition = transform.position;
-
         attackTarget = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -74,24 +73,8 @@ abstract public class BaseEnemy : MonoBehaviour
         };
 
         if (validStates.Contains(enemyState)) {
-            switch (enemyState) {
-                case EnemyState.idle:
-                    // If idle, and RTH, set state to walk
-                    if (returnToHomeposition && transform.position != homePosition) enemyState = EnemyState.walk;
-                    goto case EnemyState.walk;
-                case EnemyState.walk:
-                    // If idle or walk, and isChaseTarget, set state to chase
-                    if (isChaseTarget) enemyState = EnemyState.chase;
-                    goto case EnemyState.chase;
-                case EnemyState.chase:
-                    // If walk or chase, and isAttackTarget, set state to attack
-                    if (isAttackTarget) enemyState = EnemyState.attack;
-                    break;
-                default:
-                    // No case matched, set back to idle
-                    enemyState = EnemyState.idle;
-                    break;
-            }
+            bool rth = returnToHomeposition && transform.position != homePosition;
+            enemyState = (isAttackTarget) ? EnemyState.attack : (isChaseTarget) ? EnemyState.chase : (rth) ? EnemyState.walk : EnemyState.idle;
         }
     }
 
@@ -110,22 +93,38 @@ abstract public class BaseEnemy : MonoBehaviour
 
     virtual protected void ReturnToHome()
     {
-        if (returnToHomeposition && transform.position != homePosition) {
+        List<EnemyState> validStates = new List<EnemyState>{
+            EnemyState.walk
+        };
+
+        if (validStates.Contains(enemyState)) {
+            rigidbody2D.velocity = Vector2.zero;
             rigidbody2D.MovePosition(CalculateMoveVector(homePosition));
         }
     }
 
     virtual public void ReceiveKnockbackMessage(object[] args)
     {
-        // TODO: test to ensure the arg types are what we're expecting
+        // If the args aren't what we're expecting, return early
+        if (args.Length != 2 || args[0].GetType() != typeof(Vector3) || args[1].GetType() != typeof(float)) { return; }
+
         // unpack args
         Vector3 otherPosition = (Vector3)args[0];
         float knockbackForce = (float)args[1];
 
-        // calculate force
-        Vector2 appliedForce = transform.position - otherPosition;
-        appliedForce = appliedForce.normalized * knockbackForce;
-        StartCoroutine(ApplyKnockback(appliedForce));
+        List<EnemyState> validStates = new List<EnemyState>{
+            EnemyState.idle,
+            EnemyState.walk,
+            EnemyState.chase,
+            EnemyState.attack
+        };
+
+        if (validStates.Contains(enemyState)) {
+            // calculate force
+            Vector2 appliedForce = transform.position - otherPosition;
+            appliedForce = appliedForce.normalized * knockbackForce;
+            StartCoroutine(ApplyKnockback(appliedForce));
+        }
     }
 
     protected IEnumerator ApplyKnockback(Vector2 appliedForce)
